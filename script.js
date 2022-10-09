@@ -3,8 +3,7 @@
 //assign the chessboard and tbody variables
 let chessboard = document.getElementById("chezboard")
 let tbooty = document.getElementById("tBOOTY")
-let whiteQueen = document.createElement("img")
-whiteQueen.src = "WhiteQueen.png"
+
 
 
 
@@ -69,7 +68,10 @@ function createChessBoard(length) {
             current.addEventListener("click", (e) => {
                 console.log(e.target)
                 let box = e.target
+                let whiteQueen = document.createElement("img")
+                whiteQueen.src = "WhiteQueen.png"
                 box.appendChild(whiteQueen)
+
             })
 
             trr.appendChild(current)
@@ -82,7 +84,7 @@ function createChessBoard(length) {
     }
 }
 
-createChessBoard(3)
+createChessBoard(5)
 
 
 
