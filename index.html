@@ -4,15 +4,7 @@
         <title></title>
         <meta charset="UTF-8">
         <style>
-            .chess-board { border-spacing: 0; border-collapse: collapse; margin-left: auto; margin-right: auto;}
-            .chess-board th { padding: .5em; }
-            .chess-board td { border: 1px solid; width: 5em; height: 5em; }
-            .chess-board .light { background: #eee; }
-            .chess-board .dark { background: #000; }
-            tbody {
-                margin-left: auto;
-                
-            }
+      
         </style>
         <link rel="stylesheet" href="styles.css">
     </head>
@@ -20,15 +12,18 @@
 
 
         <img id="kirra" src="KillerQueen.png">
-        <p id="TEST"></p>
         <table class="chess-board" id="chezboard">
             <tbody id="tBOOTY">
 
             </tbody>
         </table>
+        <div class="buttonContainer">        
+            <button class="changeQueen" type="button" onclick="changeToBlack()">Black Queen</button>
+            <button class="changeQueen" type="button" onclick="changeToWhite()">White Queen</button>
+        </div>
+
     
 
     </body>
     <script src="script.js"></script>
-    <script src="main.js"></script>
 </html>

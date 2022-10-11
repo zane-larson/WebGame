@@ -1,14 +1,16 @@
-
 #T0V0T {
-    color:aqua;
-    border-color:red;
+
     border-radius: 5px;
 
 }
 
-img {
+.chess-board td img {
+    padding: 0px;
+    margin: 0px;
     max-width: 100%;
     max-height: 100%;
+    object-fit: contain;
+    display: block;
 }
 
 #kirra {
@@ -17,12 +19,56 @@ img {
     margin-right: auto;
 }
 
-html {
+body {
     background-image: url(https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmxhY2slMjB0ZXh0dXJlfGVufDB8fDB8fA%3D%3D&w=1000&q=80);
-    width: 100%; 
-    height: 100%; 
-    position: fixed; 
-    left: 0px; 
-    top: 0px; 
-    background-size: cover;
+    background-size: cover ;
+    text-align:center;
+}
+
+.chess-board {
+
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.chess-board th {
+    padding: .5em;
+    object-fit: contain;
+}
+
+.chess-board td {
+    border: 1px solid;
+    width: 3em; height: 3em;
+    object-fit: contain;
+}
+
+.chess-board .light {
+    background: rgb(230, 230, 230);
+}
+
+.chess-board .dark {
+    background: rgb(66, 66, 66);
+}
+
+tbody {
+    margin-left: auto;
+
+}
+
+.changeQueen {
+    border-radius: 10%;
+    background-color: #81138b; 
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline;
+   
 }

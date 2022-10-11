@@ -4,8 +4,17 @@
 let chessboard = document.getElementById("chezboard")
 let tbooty = document.getElementById("tBOOTY")
 
+//Make functions to allow user to change color of queen
+let selectedQueen = "WhiteQueen.png"
 
 
+let changeToWhite = () =>{
+    selectedQueen = "WhiteQueen.png"
+}
+
+let changeToBlack = () =>{
+    selectedQueen= "BlackQueen.png"
+}
 
 
 //create function to make chess board
@@ -69,8 +78,15 @@ function createChessBoard(length) {
                 console.log(e.target)
                 let box = e.target
                 let whiteQueen = document.createElement("img")
-                whiteQueen.src = "WhiteQueen.png"
+                whiteQueen.src = selectedQueen
                 box.appendChild(whiteQueen)
+                whiteQueen.className = "whiteQueen"
+                
+                
+                whiteQueen.addEventListener("click", (e) => {
+                    let curQueen = e.target
+                    curQueen.remove()
+                })
 
             })
 
@@ -84,7 +100,14 @@ function createChessBoard(length) {
     }
 }
 
-createChessBoard(5)
+
+
+
+
+
+
+
+createChessBoard(3)
 
 
 
