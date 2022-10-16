@@ -1,7 +1,20 @@
 let bz = 0;
 let wz = 0;
-let level = 4
+let level = 3
 let result = true
+
+function reset() {
+
+    let bruh= document.querySelectorAll(".Queen")
+    bruh.forEach(e => {
+        e.remove()
+    })
+    
+    bz = 0
+    wz = 0
+    result = true
+
+}
 
 //assign the chessboard and tbody variables
 let chessboard = document.getElementById("chezboard")
@@ -22,6 +35,7 @@ let changeToBlack = () =>{
 
 //create function to make chess board
 function createChessBoard(length) {
+
 
     for (i = 0; i < length; i++) {
 
@@ -104,11 +118,11 @@ function createChessBoard(length) {
                 }
 
                 
-                
-                
                 whiteQueen.addEventListener("click", (e) => {
                     let curQueen = e.target
-                    curQueen.remove()
+                    curQueen += ":)"
+                    
+                    
                 })
 
             })
@@ -131,6 +145,7 @@ createChessBoard(level)
 //Function to find coordinates of all Queens
 function checkWinStatus() {
 
+
     //Create an array containing all black queen coordiantes
     let blackQueenLocations = []
     let blackXcoords= []
@@ -138,10 +153,10 @@ function checkWinStatus() {
     for (i= 0; i< bz; i++){
 
     let rawBlackCoords = document.getElementById(`BQ${i}`).parentElement.id
-    blackQueenLocations.push(rawBlackCoords.charAt(1) +"-"+rawBlackCoords.charAt(3))
-    blackXcoords.push(rawBlackCoords.charAt(1))
-    blackYcoords.push(rawBlackCoords.charAt(3))
-    
+    blackQueenLocations.push(rawBlackCoords.substring(1, rawBlackCoords.indexOf("v")) +"-"+rawBlackCoords.substring(3, rawBlackCoords.indexOf("t")))
+    blackXcoords.push(rawBlackCoords.substring(1, rawBlackCoords.indexOf("v")))
+    blackYcoords.push(rawBlackCoords.substring(3, rawBlackCoords.indexOf("t")))
+
     }    
 
 
@@ -150,9 +165,13 @@ function checkWinStatus() {
     let whiteYcoords = []
     for (i=0; i<wz; i++){
         let rawWhiteCoords = document.getElementById(`WQ${i}`).parentElement.id
-         whiteXcoords.push(rawWhiteCoords.charAt(1))
-         whiteYcoords.push(rawWhiteCoords.charAt(3))
-        
+         whiteXcoords.push(rawWhiteCoords.substring(1, rawWhiteCoords.indexOf("V")))
+         whiteYcoords.push(rawWhiteCoords.substring(3, rawWhiteCoords.indexOf("T")))
+
+         
+
+
+
     }
 
     console.log("white x coord is " +whiteXcoords)
@@ -161,24 +180,6 @@ function checkWinStatus() {
     console.log("black y coord is "+blackYcoords)
 
 
-
-
-//Checks if black and white queens share any horizonal or veritcal positions
-    // for(i=0; i<whiteXcoords.length; i++){
-
-    //     for(j=0; j<blackXcoords.length; j++){
-            
-    //         if(whiteXcoords[i] == blackXcoords[j]){
-    //             console.log("failure")
-    //         }
-    //         else{console.log("success")}
-
-    //         if(whiteYcoords[i] == blackYcoords[j]){
-    //             console.log("failure")
-    //         }
-    //         else{console.log("success")}
-    //     }
-    // }
 
 //Checks to see if black and white queens share any diagonal positions
 
@@ -217,22 +218,97 @@ for(i=0; i<blackQueenLocations.length; i++){
 
 }
 
-for(g=0; g<whiteXcoords.length; g++){
 
-    if(illegalSquares.includes(`${whiteXcoords[g]}-${whiteYcoords[g]}`) == false){
-        
+if(level == 3){
+    solution = 1
+    console.log(solution)
+}
+else if(level == 4){
+    solution = 2
+    console.log(solution)
+}
+else if(level == 5){
+    solution = 4
+    console.log(solution)
+}
+else if(level == 6){
+    solution = 5
+}
+else if(level == 7){
+    solution = 7
+}
+else if(level == 8){
+    solution = 9
+}
+else if(level == 9){
+    solution = 12
+}
+else if(level == 10){
+    solution = 14
+}
+else if(level == 11){
+    solution = 17
+}
+else if(level == 12){
+    solution = 21
+}
+
+
+
+
+if (bz != 0 && wz != 0){
+    for(g=0; g<whiteXcoords.length; g++){
+
+        if(illegalSquares.includes(`${whiteXcoords[g]}-${whiteYcoords[g]}`) == false && solution == wz){
+            console.log(bz)
+        }
+        else{
+            result = false
+            console.log(wz)
+        }
     }
-    else{
-        result = false
-    }
+}
+else{
+    result = false
 }
 
 if(result == false){
-    alert("failure")
+    alert("Try agian")
 }
 else{
-    alert("success")
+    changeLevel()
 }
+
+}
+
+function changeLevel() {
+
+    level += 1
+    reset()
+    let bruh= document.querySelectorAll(".light")
+    bruh.forEach(e => {
+        e.remove()
+    })
+    let bruh2= document.querySelectorAll(".dark")
+    bruh2.forEach(e => {
+        e.remove()
+    })
+    createChessBoard(level)
+
+}
+function changeLevelButton(levelToChangeTo) {
+
+    level = levelToChangeTo
+    reset()
+    let bruh= document.querySelectorAll(".light")
+    bruh.forEach(e => {
+        e.remove()
+    })
+    let bruh2= document.querySelectorAll(".dark")
+    bruh2.forEach(e => {
+        e.remove()
+    })
+    createChessBoard(level)
 
 }
 

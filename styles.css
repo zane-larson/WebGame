@@ -9,7 +9,7 @@
     margin: 0px;
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain;
+    object-fit: fill;
     display: block;
 }
 
@@ -19,10 +19,12 @@
     margin-right: auto;
 }
 
+
 body {
     background-image: url(https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmxhY2slMjB0ZXh0dXJlfGVufDB8fDB8fA%3D%3D&w=1000&q=80);
     background-size: cover ;
     text-align:center;
+    z-index: -1;
 }
 
 .chess-board {
@@ -31,7 +33,7 @@ body {
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
-
+    z-index: 2;
 }
 
 .chess-board th {
@@ -40,17 +42,20 @@ body {
 }
 
 .chess-board td {
-    border: 1px solid;
+    border: 2px dashed;
+    border-color: rgb(214, 172, 104);
     width: 3em; height: 3em;
     object-fit: contain;
+    box-shadow: 0 0 0 1px rgb(214, 172, 104), 0 0 0 1px rgb(214, 172, 104);
 }
 
+
 .chess-board .light {
-    background: rgb(230, 230, 230);
+    background: rgb(35, 40, 77);
 }
 
 .chess-board .dark {
-    background: rgb(66, 66, 66);
+    background: rgb(129, 41, 105);
 }
 
 tbody {
@@ -60,7 +65,7 @@ tbody {
 
 .changeQueen {
     border-radius: 10%;
-    background-color: #81138b; 
+    background-color: rgb(35,40,77); 
     border: none;
     color: white;
     padding: 20px;
@@ -70,6 +75,49 @@ tbody {
     font-size: 16px;
     cursor: pointer;
     display: inline;
+    width: 150px;
+    margin: 5px;
+    
    
 }
 
+#killaqueen{
+    position:absolute;
+    left: 100px;
+    bottom: 0px;
+    height: 500px;
+    width: auto;
+    z-index: -1;
+}
+
+#kiraqueen{
+    position:absolute;
+    right: 200px;
+    bottom: 0px;
+    height: 500px;
+    width: auto;
+    z-index: -1;
+}
+
+.buttonContainer{
+    /* border-radius: 2px;
+    border-color:black;
+    border-style: solid; */
+    display: inline-block;
+    padding: 10px;
+
+    background-size: 500px;
+}
+.selectLevel{
+
+border-radius: 10%;
+background-color: rgb(129, 41, 105); 
+padding: 10px;
+border: none;
+margin: 5px;
+color: white;
+
+}
+.levelSelector{
+    display: block;
+}
