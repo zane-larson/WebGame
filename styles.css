@@ -3,6 +3,14 @@
     border-radius: 5px;
 
 }
+
+#header{
+    margin-top: -20px;
+    color: white;
+    
+
+}
+
 .containerContainer{
 
     width: 400px;

@@ -29,19 +29,21 @@ let chessboard = document.getElementById("chezboard")
 let tbooty = document.getElementById("tBOOTY")
 
 //Make functions to allow user to change color of queen
-let selectedQueen = "WhiteQueen.png"
+let selectedQueen = "assets/WhiteQueen.png"
 
 let changeToWhite = () =>{
-    selectedQueen = "WhiteQueen.png"
+    selectedQueen = "assets/WhiteQueen.png"
 }
 
 let changeToBlack = () =>{
-    selectedQueen= "BlackQueen.png"
+    selectedQueen= "assets/BlackQueen.png"
 }
 
 
 //create function to make chess board
 function createChessBoard(length) {
+
+    document.getElementById("header").textContent = (`Level ${level}`)
 
 
     for (i = 0; i < length; i++) {
@@ -116,7 +118,7 @@ function createChessBoard(length) {
                     
                     //Assign queens an ID when placed
                     whiteQueen.className = "Queen"
-                    if (selectedQueen == "WhiteQueen.png"){
+                    if (selectedQueen == "assets/WhiteQueen.png"){
                         whiteQueen.classList.add("white")
                         whiteQueen.id = `WQ${wz}`
                         wz +=1
@@ -272,7 +274,12 @@ else{
 }
 
 if(result == false){
-    alert("Try agian")
+    document.getElementById("header").textContent = ("Failure")
+    setTimeout( () => {
+        document.getElementById("header").textContent = (`Level ${level}`)
+    }, 2000)
+    
+
 }
 else{
     
@@ -281,8 +288,10 @@ else{
 
 }
 
-function changeLevel() {
 
+//Change to next level and reset board
+function changeLevel() {
+    
     level += 1
     reset()
     let bruh= document.querySelectorAll(".light")
@@ -296,8 +305,10 @@ function changeLevel() {
     createChessBoard(level)
 
 }
-function changeLevelButton(levelToChangeTo) {
 
+//Change to level selected and reset board
+function changeLevelButton(levelToChangeTo) {
+    
     level = levelToChangeTo
     reset()
     let bruh= document.querySelectorAll(".light")
