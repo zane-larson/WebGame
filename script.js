@@ -1,15 +1,23 @@
+//Black queen count
 let bz = 0;
+
+//White Queen count
 let wz = 0;
+
+//board size
 let level = 3
+
+//setting condition to check for win
 let result = true
 
 function reset() {
-
+    //Remove all queens
     let bruh= document.querySelectorAll(".Queen")
     bruh.forEach(e => {
         e.remove()
     })
     
+    //Set variables to starting conditions
     bz = 0
     wz = 0
     result = true
@@ -19,10 +27,9 @@ function reset() {
 //assign the chessboard and tbody variables
 let chessboard = document.getElementById("chezboard")
 let tbooty = document.getElementById("tBOOTY")
-let coordsArray = []
+
 //Make functions to allow user to change color of queen
 let selectedQueen = "WhiteQueen.png"
-
 
 let changeToWhite = () =>{
     selectedQueen = "WhiteQueen.png"
@@ -88,61 +95,57 @@ function createChessBoard(length) {
             }
 
 
-            //Append row
+            //Set the coordinate ID for each square of the board
             current.id = (`T${n}V${i}T`)
             
-
-            var coordString = current.id.charAt(1) + "-" + current.id.charAt(3)
-            coordsArray.push(coordString)
             
-
             current.addEventListener("click", (e) => {
-
                 
-
-                // console.log(e.target)
+                
+                
+                //Place Queens in boxes with event listener
                 let box = e.target
                 let whiteQueen = document.createElement("img")
                 whiteQueen.src = selectedQueen
-                box.appendChild(whiteQueen)
-                whiteQueen.className = "Queen"
-                if (selectedQueen == "WhiteQueen.png"){
-                    whiteQueen.classList.add("white")
-                    whiteQueen.id = `WQ${wz}`
-                    wz +=1
-                }
-                else {
-                    whiteQueen.classList.add("black")
-                    whiteQueen.id = `BQ${bz}`
-                    bz +=1
-                }
-
                 
-                whiteQueen.addEventListener("click", (e) => {
-                    let curQueen = e.target
-                    curQueen += ":)"
+                //Check to make sure queen is being places in a box
+                if(box.childElementCount < 1){
+                    if(box.className == "dark" || box.className == "light"){
+                
+                    box.appendChild(whiteQueen)
                     
-                    
-                })
-
+                    //Assign queens an ID when placed
+                    whiteQueen.className = "Queen"
+                    if (selectedQueen == "WhiteQueen.png"){
+                        whiteQueen.classList.add("white")
+                        whiteQueen.id = `WQ${wz}`
+                        wz +=1
+                    }
+                    else {
+                        whiteQueen.classList.add("black")
+                        whiteQueen.id = `BQ${bz}`
+                        bz +=1
+                    }
+                }}
             })
-
+            //Creation of the Rows
             trr.appendChild(current)
             switchCase()
 
 
 
         }
+        //creation of the columns
         tbooty.appendChild(trr)
     }
     
 }
 
-
+//Activate function to make chess board
 createChessBoard(level)
 
 
-//Function to find coordinates of all Queens
+//Function to find coordinates of all Queens and check win donditions
 function checkWinStatus() {
 
 
@@ -150,12 +153,14 @@ function checkWinStatus() {
     let blackQueenLocations = []
     let blackXcoords= []
     let blackYcoords= []
+
+    //Loop through all queens and assign coordinates to variables for each
     for (i= 0; i< bz; i++){
 
     let rawBlackCoords = document.getElementById(`BQ${i}`).parentElement.id
-    blackQueenLocations.push(rawBlackCoords.substring(1, rawBlackCoords.indexOf("v")) +"-"+rawBlackCoords.substring(3, rawBlackCoords.indexOf("t")))
-    blackXcoords.push(rawBlackCoords.substring(1, rawBlackCoords.indexOf("v")))
-    blackYcoords.push(rawBlackCoords.substring(3, rawBlackCoords.indexOf("t")))
+    blackQueenLocations.push(rawBlackCoords.substring(1, rawBlackCoords.indexOf("V")) +"-"+rawBlackCoords.substring(3, rawBlackCoords.indexOf("t")))
+    blackXcoords.push(rawBlackCoords.substring(1, rawBlackCoords.indexOf("V")))
+    blackYcoords.push(rawBlackCoords.substring(3, rawBlackCoords.lastIndexOf("T")))
 
     }    
 
@@ -165,26 +170,23 @@ function checkWinStatus() {
     let whiteYcoords = []
     for (i=0; i<wz; i++){
         let rawWhiteCoords = document.getElementById(`WQ${i}`).parentElement.id
+        
          whiteXcoords.push(rawWhiteCoords.substring(1, rawWhiteCoords.indexOf("V")))
-         whiteYcoords.push(rawWhiteCoords.substring(3, rawWhiteCoords.indexOf("T")))
-
+         whiteYcoords.push(rawWhiteCoords.substring(3, rawWhiteCoords.lastIndexOf("T")))
+        console.log(rawWhiteCoords)
          
 
 
 
     }
 
-    console.log("white x coord is " +whiteXcoords)
-    console.log("white y coord is "+whiteYcoords)
-    console.log("black x coord is "+blackXcoords)
-    console.log("black y coord is "+blackYcoords)
-
-
 
 //Checks to see if black and white queens share any diagonal positions
 
 illegalSquares = []
 
+
+//Assign illegal square status to all coordinates in each direction of the black queens
 for(i=0; i<blackQueenLocations.length; i++){
 
     
@@ -218,18 +220,15 @@ for(i=0; i<blackQueenLocations.length; i++){
 
 }
 
-
+//set Requred pairs of queens for each level
 if(level == 3){
     solution = 1
-    console.log(solution)
 }
 else if(level == 4){
     solution = 2
-    console.log(solution)
 }
 else if(level == 5){
     solution = 4
-    console.log(solution)
 }
 else if(level == 6){
     solution = 5
@@ -255,7 +254,7 @@ else if(level == 12){
 
 
 
-
+//Check to make sure white queens are not within the illegal squares
 if (bz != 0 && wz != 0){
     for(g=0; g<whiteXcoords.length; g++){
 
@@ -276,6 +275,7 @@ if(result == false){
     alert("Try agian")
 }
 else{
+    
     changeLevel()
 }
 

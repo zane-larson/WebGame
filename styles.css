@@ -3,7 +3,14 @@
     border-radius: 5px;
 
 }
+.containerContainer{
 
+    width: 400px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 400px;
+    display: block;
+}
 .chess-board td img {
     padding: 0px;
     margin: 0px;
@@ -71,12 +78,13 @@ tbody {
     padding: 20px;
     text-align: center;
     text-decoration: none;
-    display: flex;
+    display: block;
     font-size: 16px;
     cursor: pointer;
     display: inline;
     width: 150px;
     margin: 5px;
+   
     
    
 }
@@ -99,15 +107,7 @@ tbody {
     z-index: -1;
 }
 
-.buttonContainer{
-    /* border-radius: 2px;
-    border-color:black;
-    border-style: solid; */
-    display: inline-block;
-    padding: 10px;
 
-    background-size: 500px;
-}
 .selectLevel{
 
 border-radius: 10%;
@@ -117,7 +117,12 @@ border: none;
 margin: 5px;
 color: white;
 
+
 }
 .levelSelector{
+    display: block;
+}
+
+.buttselector {
     display: block;
 }

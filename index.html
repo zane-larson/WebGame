@@ -12,6 +12,7 @@
 
 
         <img id="kirra" src="KillerQueen.png">
+
         <!-- <div><img src="kiraskull.png" class="skull"><img src="kiraskull.png" class="skull" id="skull2"></div> -->
         <table class="chess-board" id="chezboard">
             <tbody id="tBOOTY">
@@ -19,37 +20,37 @@
             </tbody>
             
         </table>
-        <div class="buttonContainer">        
-            <button class="changeQueen" type="button" onclick="changeToBlack()">Black Queen</button>
-            <button class="changeQueen" type="button" onclick="changeToWhite()">White Queen</button>
-            <div>            <button class="changeQueen" type="button" onclick="checkWinStatus()">Check</button>
-                <button class="changeQueen" type="button" onclick="reset()">Reset</button></div>
-
-            <div>
-                <h2 style="text-align:left; color: purple; ">Select Level</h3>
-            <button class="selectLevel" type="button" onclick="changeLevelButton(3)">Level 3</button>
-            <button class="selectLevel" type="button" onclick="changeLevelButton(4)">Level 4</button>
-            <button class="selectLevel" type="button" onclick="changeLevelButton(5)">Level 5</button>
-            <button class="selectLevel" type="button" onclick="changeLevelButton(6)">Level 6</button>
-            <button class="selectLevel" type="button" onclick="changeLevelButton(7)">Level 7</button>
-            <div>            
-                <button class="selectLevel" type="button" onclick="changeLevelButton(8)">Level 8</button>
-                <button class="selectLevel" type="button" onclick="changeLevelButton(9)">Level 9</button>
-                <button class="selectLevel" type="button" onclick="changeLevelButton(10)">Level 10</button>
-                <button class="selectLevel" type="button" onclick="changeLevelButton(11)">Level 11</button>
-                <button class="selectLevel" type="button" onclick="changeLevelButton(12)">Level 12</button>
+        <div class="containerContainer">
+                <h2 style="color:white; text-align: center; ">Controls</h2>
+                <button class="changeQueen" type="button" onclick="changeToBlack()">Black Queen</button>
+                <button class="changeQueen" type="button" onclick="changeToWhite()">White Queen</button>
+                <div>            
+                    <button class="changeQueen" type="button" onclick="checkWinStatus()">Check</button>
+                    <button class="changeQueen" type="button" onclick="reset()">Reset</button>
+                </div>
+                
+                <div class="buttselector">
+                    
+                    <h2 style="text-align:center; color: purple; display: block; width: 90%; margin-top: 10px; ">Select Level</h3>
+                    <button class="selectLevel" type="button" onclick="changeLevelButton(3)">Level 3</button>
+                    <button class="selectLevel" type="button" onclick="changeLevelButton(4)">Level 4</button>
+                    <button class="selectLevel" type="button" onclick="changeLevelButton(5)">Level 5</button>
+                    <button class="selectLevel" type="button" onclick="changeLevelButton(6)">Level 6</button>
+                    <button class="selectLevel" type="button" onclick="changeLevelButton(7)">Level 7</button>            
+                    <button class="selectLevel" type="button" onclick="changeLevelButton(8)">Level 8</button>
+                    <button class="selectLevel" type="button" onclick="changeLevelButton(9)">Level 9</button>
+                    <button class="selectLevel" type="button" onclick="changeLevelButton(10)">Level 10</button>
+                    <button class="selectLevel" type="button" onclick="changeLevelButton(11)">Level 11</button>
+                    <button class="selectLevel" type="button" onclick="changeLevelButton(12)">Level 12</button>
                 </div>
 
-            </div>
             
-
-        </div>
-        <div class="levelSelector">
-
+            
         </div>
 
-    <img src="Kirra.png" id="killaqueen">
-    <img src="kira.png" id="kiraqueen">
+
+    <!-- <img src="Kirra.png" id="killaqueen">
+    <img src="kira.png" id="kiraqueen"> -->
 
     </body>
     <script src="script.js"></script>
